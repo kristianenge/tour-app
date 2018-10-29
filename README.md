@@ -6,7 +6,7 @@
 * VSCode (Optional)
 
 # install
-* git clone git@github.com:kristianenge/tour-app.git
+* git clone `git@github.com:kristianenge/tour-app.git`
 * cd tour-app
 * dotnet restore
 
