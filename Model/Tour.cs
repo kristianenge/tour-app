@@ -53,29 +53,22 @@ namespace Model
         private City FindNextCity(City city)
         {
             Console.WriteLine("Find next city from " + city.Name);
-            bool foundMatch = false;
-            var nextCityName = "";
-            var distanceAmount = 0d;
-            var availableDistances = city.Distances.OrderBy(x => x.Amount).ToList();
-            while (!foundMatch && availableDistances.Count > 0)
-            {
-                var lowestDist = availableDistances.First();
-                if (visitedCities.Exists(x => x.Name == lowestDist.City))
-                {
-                    Console.WriteLine($"Already visited {lowestDist.City}, removing it from possible and moving on to next..");
-                    availableDistances.Remove(lowestDist);
-                    continue;
-                }
-                nextCityName = lowestDist.City;
-                distanceAmount = lowestDist.Amount;
-                foundMatch = true;
+            var availableDistances =  cities.Except(visitedCities).ToList();
+            var lowestYetTuple = (value:double.MaxValue,name:"");
+            foreach(var dist in availableDistances){
+                var currentDist = city.distanceTo(dist);
+                if(currentDist < lowestYetTuple.value){
+                    lowestYetTuple.value = currentDist;
+                    lowestYetTuple.name = dist.Name;
+                };
             }
-            var next = cities.FirstOrDefault(x => x.Name == nextCityName);
+            
+            var next = cities.FirstOrDefault(x => x.Name == lowestYetTuple.name);
 
             if (next != null)
             {
-                DistanceTraveled += distanceAmount;
-                Console.WriteLine($"Found {next.Name} with amount {distanceAmount}");
+                DistanceTraveled += lowestYetTuple.value;
+                Console.WriteLine($"Found {next.Name} with amount {lowestYetTuple.value}");
             }
             return next;
         }
