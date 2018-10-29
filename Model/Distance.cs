@@ -10,8 +10,12 @@ namespace Model
         [JsonProperty("distance")]
         public string DistanceText { get; set; }
 
-        public double Amount {get{
-            return double.Parse(DistanceText);
-        }}
+        public double Amount
+        {
+            get
+            {
+                return double.Parse(DistanceText);
+            }
+        }
     }
 }

@@ -71,8 +71,9 @@ namespace Model
                 foundMatch = true;
             }
             var next = cities.FirstOrDefault(x => x.Name == nextCityName);
-            
-            if(next != null){
+
+            if (next != null)
+            {
                 DistanceTraveled += distanceAmount;
                 Console.WriteLine($"Found {next.Name} with amount {distanceAmount}");
             }

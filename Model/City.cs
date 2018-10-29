@@ -16,10 +16,11 @@ namespace Model
         [JsonProperty("distances")]
         public Distance[] Distances { get; set; }
 
-        public double distanceTo(City c){
-            return Distances.FirstOrDefault(x => x.City == c.Name).Amount; 
+        public double distanceTo(City c)
+        {
+            return Distances.FirstOrDefault(x => x.City == c.Name).Amount;
         }
-    
+
         public static City[] FromJson(string json) => JsonConvert.DeserializeObject<City[]>(json, Model.Converter.Settings);
     }
 
