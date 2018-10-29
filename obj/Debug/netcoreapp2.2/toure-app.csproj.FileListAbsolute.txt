@@ -1,0 +1,11 @@
+/Users/kristian-mac/git-repos/privat/toure-app/bin/Debug/netcoreapp2.2/toure-app.deps.json
+/Users/kristian-mac/git-repos/privat/toure-app/bin/Debug/netcoreapp2.2/toure-app.runtimeconfig.json
+/Users/kristian-mac/git-repos/privat/toure-app/bin/Debug/netcoreapp2.2/toure-app.runtimeconfig.dev.json
+/Users/kristian-mac/git-repos/privat/toure-app/bin/Debug/netcoreapp2.2/toure-app.dll
+/Users/kristian-mac/git-repos/privat/toure-app/bin/Debug/netcoreapp2.2/toure-app.pdb
+/Users/kristian-mac/git-repos/privat/toure-app/obj/Debug/netcoreapp2.2/toure-app.csprojAssemblyReference.cache
+/Users/kristian-mac/git-repos/privat/toure-app/obj/Debug/netcoreapp2.2/toure-app.csproj.CoreCompileInputs.cache
+/Users/kristian-mac/git-repos/privat/toure-app/obj/Debug/netcoreapp2.2/toure-app.AssemblyInfoInputs.cache
+/Users/kristian-mac/git-repos/privat/toure-app/obj/Debug/netcoreapp2.2/toure-app.AssemblyInfo.cs
+/Users/kristian-mac/git-repos/privat/toure-app/obj/Debug/netcoreapp2.2/toure-app.dll
+/Users/kristian-mac/git-repos/privat/toure-app/obj/Debug/netcoreapp2.2/toure-app.pdb
