@@ -1,15 +1,17 @@
 ﻿using System;
-using Model;
 using System.Linq;
 using System.Collections.Generic;
+using tourApp.FileUtil;
+using tourApp.Model;
 
-namespace toure_app
+namespace tourApp
 {
     class Program
     {
         static void Main(string[] args)
         {
-             var jsonFile = System.IO.File.ReadAllText(@"./data/cities.json");
+            
+            var jsonFile = FileReader.ReadEmbeddedFile("tourApp.data.cities.json");
             var cities = City.FromJson(jsonFile);
             
             var AllTours = new List<String>();
@@ -18,6 +20,7 @@ namespace toure_app
             }
             Console.WriteLine("Aaand the results are:");
             Console.WriteLine(AllTours.Aggregate((x,y)=> (x)+System.Environment.NewLine+(y)));
+            Console.ReadKey();
         }
 
         public static string doRoute(City[] cities,string cityName){

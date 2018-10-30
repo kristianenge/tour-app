@@ -1,6 +1,8 @@
-namespace Model
+namespace tourApp.Model
 {
     using Newtonsoft.Json;
+    using System;
+    using System.Globalization;
 
     public class Distance
     {
@@ -14,7 +16,7 @@ namespace Model
         {
             get
             {
-                return double.Parse(DistanceText);
+                return double.Parse(DistanceText, CultureInfo.InvariantCulture);
             }
         }
     }
