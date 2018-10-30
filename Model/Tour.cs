@@ -15,7 +15,7 @@ namespace tourApp.Model
 
         private List<City> cities = new List<City>();
         private List<City> visitedCities = new List<City>();
-        private double DistanceTraveled { get; set; }
+        private double DistanceTraveled { get; set; } = 0d;
         private City StarterCity { get; }
         private City CurrentCity { get; set; }
 
@@ -60,32 +60,47 @@ namespace tourApp.Model
         private void GoHome()
         {
             Console.WriteLine($"Going home to {StarterCity.Name}");
-            var distanceHome = CurrentCity.Distances.Where(x => x.City == StarterCity.Name).FirstOrDefault();
-            DistanceTraveled += distanceHome.Amount;
-            AddStepToRoute(StarterCity);
+            foreach(var distance in CurrentCity.Distances)
+            {
+                if ( distance.City == StarterCity.Name)
+                {
+                    DistanceTraveled += distance.Amount;
+                    AddStepToRoute(StarterCity);
+                }
+            }
         }
 
         private City FindNextCity(City city)
         {
             Console.WriteLine("Find next city from " + city.Name);
-            var availableDistances = cities.Except(visitedCities).ToList();
-            var lowestYetTuple = (value: double.MaxValue, name: "");
+
+            var availableDistances = cities.Except(visitedCities).ToList(); //diff between two arrays
+
+            string nameForNextCity ="";
+            double lengthToNextCity = double.MaxValue;
+
             foreach (var dist in availableDistances)
             {
                 var currentDist = city.distanceTo(dist);
-                if (currentDist < lowestYetTuple.value)
+                if (currentDist < lengthToNextCity)
                 {
-                    lowestYetTuple.value = currentDist;
-                    lowestYetTuple.name = dist.Name;
+                    nameForNextCity = dist.Name;
+                    lengthToNextCity = currentDist;
                 };
             }
 
-            var next = cities.FirstOrDefault(x => x.Name == lowestYetTuple.name);
+            City next = null;
+            foreach ( City c in cities)
+            //for(int i = 0; i< cities.Count)
+            {
+                if (c.Name == nameForNextCity)
+                    next = c;
+            }
 
             if (next != null)
             {
-                DistanceTraveled += lowestYetTuple.value;
-                Console.WriteLine($"Found {next.Name} with amount {lowestYetTuple.value}");
+                DistanceTraveled += lengthToNextCity;
+                Console.WriteLine($"Found {next.Name} with amount {lengthToNextCity}");
             }
             return next;
         }
