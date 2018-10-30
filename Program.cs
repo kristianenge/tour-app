@@ -24,12 +24,14 @@ namespace tourApp
         }
 
         public static string doRoute(City[] cities,string cityName){
+            Console.WriteLine($"===========StarterCity[{cityName}]========================");
             var Tour = new Tour(cities.FirstOrDefault(x => x.Name == cityName));
             foreach(var city in cities){
                 Tour.addCity(city);
             }
             var tour = Tour.findTour();
-            Console.WriteLine(tour);
+            Console.WriteLine($"Result for run [{tour}]");
+            Console.WriteLine("============================================================");
             return tour;
         }
     }
