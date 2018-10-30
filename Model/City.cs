@@ -4,6 +4,7 @@ namespace tourApp.Model
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using System.Linq;
+    using System;
 
     public class City
     {
@@ -15,7 +16,12 @@ namespace tourApp.Model
 
         public double distanceTo(City c)
         {
-            return Distances.FirstOrDefault(x => x.City == c.Name).Amount;
+            foreach(var dist in Distances){
+                if(dist.City == c.Name)
+                    return dist.Amount;
+            }
+            
+            throw new Exception("Did not find matching city");
         }
 
         public static City[] FromJson(string json) => JsonConvert.DeserializeObject<City[]>(json, Model.Converter.Settings);
