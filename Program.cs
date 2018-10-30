@@ -10,7 +10,6 @@ namespace tourApp
     {
         static void Main(string[] args)
         {
-            
             var jsonFile = FileReader.ReadEmbeddedFile("tourApp.data.cities.json");
             var cities = City.FromJson(jsonFile);
             
